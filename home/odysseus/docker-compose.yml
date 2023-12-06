@@ -1,0 +1,50 @@
+version: '2.1'
+
+networks:
+  odysseus-net:
+    driver: bridge
+
+services:
+  backend:
+    image: 117604685733.dkr.ecr.eu-west-1.amazonaws.com/odysseus-backend:latest
+    container_name: odysseus-backend
+    restart: unless-stopped
+    expose:
+      - 8888
+    ports:
+      - 127.0.0.1:8888:8888
+    networks:
+      - odysseus-net
+    depends_on:
+      - database
+    volumes:
+      - "./.backend.env.prod:/app/.env:ro"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  database:
+    image: 117604685733.dkr.ecr.eu-west-1.amazonaws.com/odysseus-database:latest
+    container_name: odysseus-database
+    restart: unless-stopped
+    expose:
+      - 5432
+    ports:
+      - 127.0.0.1:5432:5432
+      # Allow db access from internal network, e.g. geoserver running on a separate host
+      # - 10.0.0.1:5432:5432
+    networks:
+      - odysseus-net
+    environment:
+      # Set POSTGRES_PASSWORD to same as DB_PASSWORD in .backend.env.prod
+      - POSTGRES_PASSWORD=
+    command: postgres -c listen_addresses='*'
+    volumes:
+      - "./data/postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -q"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
