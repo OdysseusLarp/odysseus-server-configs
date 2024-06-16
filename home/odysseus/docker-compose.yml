@@ -1,12 +1,10 @@
-version: '2.1'
-
 networks:
   odysseus-net:
     driver: bridge
 
 services:
   backend:
-    image: 117604685733.dkr.ecr.eu-west-1.amazonaws.com/odysseus-backend:latest
+    image: odysseus-backend:latest
     container_name: odysseus-backend
     restart: unless-stopped
     expose:
@@ -19,6 +17,9 @@ services:
       - database
     volumes:
       - "./.backend.env.prod:/app/.env:ro"
+    # devices:
+    #   # Set this to the same as DMX_DEVICE_PATH in .backend.env.prod
+    #   - "/dev/ttyUSB0:/dev/ttyUSB0"
     healthcheck:
       test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
       interval: 30s
@@ -26,7 +27,7 @@ services:
       retries: 3
 
   database:
-    image: 117604685733.dkr.ecr.eu-west-1.amazonaws.com/odysseus-database:latest
+    image: odysseus-database:latest
     container_name: odysseus-database
     restart: unless-stopped
     expose:
@@ -39,7 +40,7 @@ services:
       - odysseus-net
     environment:
       # Set POSTGRES_PASSWORD to same as DB_PASSWORD in .backend.env.prod
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=postgres
     command: postgres -c listen_addresses='*'
     volumes:
       - "./data/postgres:/var/lib/postgresql/data"

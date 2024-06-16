@@ -45,10 +45,36 @@ docker build -t odysseus-backend .
 Deploy the new version:
 ```bash
 cd ~/git/odysseus-server-configs/home/odysseus
-docker-compose up -d
+docker compose up -d
 ```
 
 Note that this will also restart the database container if its image has changed. This will not affect the data in the database because the data is stored in a volume.
+
+#### DMX
+The USB DMX thingy is volume mapped from the host to the docker container. If the USB device configuration changes for some reason, make sure that it's mapped correctly. Make sure that it shows up in `lsusb`:
+```bash
+➜  ~ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 004: ID 0403:6001 Future Technology Devices International, Ltd FT232 Serial (UART) IC
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
+
+The device we are interested in is the `Future Technology Devices International, Ltd FT232 Serial (UART) IC`. Unfortunately `lsusb` does not show the device path, but in this case, we can access the device from `/dev/ttyUSB0` on the host.
+
+Make sure that the device is correctly mapped in the `docker-compose.yml` file:
+```yaml
+services:
+  backend:
+    ...
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+```
+
+Also make sure that it's correctly configured in the `~/git/odysseus-server-configs/home/odysseus/.backend.env.prod` file:
+```bash
+DMX_DRIVER=enttec-usb-dmx-pro
+DMX_DEVICE_PATH=/dev/ttyUSB0
+```
 
 ### odysseus-data-hub
 Build and deploy the new version:
