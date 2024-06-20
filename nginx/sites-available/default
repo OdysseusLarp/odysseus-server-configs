@@ -101,6 +101,12 @@ server {
 		proxy_pass http://localhost:8080/;
 	}
 
+	# Gene samples
+	location ~ ^/gene-samples/.*\.pdf$ {
+		root /var/www/odysseus/;
+		try_files $uri =404;
+	}
+
 	listen 80;
 	listen 443 ssl; # managed by Certbot
 	ssl_certificate /etc/letsencrypt/live/live.odysseuslarp.dev/fullchain.pem; # managed by Certbot
