@@ -4,7 +4,7 @@ server {
 
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name live.odysseuslarp.dev default_server;
+	server_name odysseus-server.live.odysseuslarp.dev live.odysseuslarp.dev default_server;
 
 	# Backend API proxy
 	location / {

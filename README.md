@@ -4,15 +4,15 @@ Contains the configuration files for hosting all Odysseus apps. Database, backen
 
 | App                                                                                    | URL                                                                                    | Type   |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------ |
-| [odysseus-admin-story-tool](https://github.com/OdysseusLarp/odysseus-admin-story-tool) | [https://live.odysseuslarp.dev/storyadmin/](https://live.odysseuslarp.dev/storyadmin/) | Static |
-| [odysseus-admin](https://github.com/OdysseusLarp/odysseus-admin)                       | [https://live.odysseuslarp.dev/adminui/#/](https://live.odysseuslarp.dev/adminui/#/)   | Static |
-| [odysseus-backend](https://github.com/OdysseusLarp/odysseus-backend)                   | [https://live.odysseuslarp.dev/](https://live.odysseuslarp.dev/)                       | Docker |
-| [odysseus-data-hub](https://github.com/OdysseusLarp/odysseus-data-hub)                 | [https://live.odysseuslarp.dev/social/](https://live.odysseuslarp.dev/social/)         | Static |
-| [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver)               | [https://live.odysseuslarp.dev/geoserver/](https://live.odysseuslarp.dev/geoserver/)   | Docker |
-| [odysseus-HANSCA](https://github.com/OdysseusLarp/odysseus-HANSCA)                     | [https://live.odysseuslarp.dev/hansca/](https://live.odysseuslarp.dev/hansca/)         | Static |
-| [odysseus-jump-ui](https://github.com/OdysseusLarp/hansca)                             | [https://live.odysseuslarp.dev/jumpui/](https://live.odysseuslarp.dev/jumpui/)         | Static |
-| [odysseus-mct](https://github.com/OdysseusLarp/odysseus-mct)                           | [https://live.odysseuslarp.dev/mct/](https://live.odysseuslarp.dev/mct/)               | Docker |
-| [odysseus-misc-ui](https://github.com/OdysseusLarp/odysseus-misc-ui)                   | [https://live.odysseuslarp.dev/misc/#/](https://live.odysseuslarp.dev/misc/#/)         | Static |
+| [odysseus-admin-story-tool](https://github.com/OdysseusLarp/odysseus-admin-story-tool) | [https://odysseus-server.live.odysseuslarp.dev/storyadmin/](https://odysseus-server.live.odysseuslarp.dev/storyadmin/) | Static |
+| [odysseus-admin](https://github.com/OdysseusLarp/odysseus-admin)                       | [https://odysseus-server.live.odysseuslarp.dev/adminui/#/](https://odysseus-server.live.odysseuslarp.dev/adminui/#/)   | Static |
+| [odysseus-backend](https://github.com/OdysseusLarp/odysseus-backend)                   | [https://odysseus-server.live.odysseuslarp.dev/](https://odysseus-server.live.odysseuslarp.dev/)                       | Docker |
+| [odysseus-data-hub](https://github.com/OdysseusLarp/odysseus-data-hub)                 | [https://odysseus-server.live.odysseuslarp.dev/social/](https://odysseus-server.live.odysseuslarp.dev/social/)         | Static |
+| [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver)               | [https://odysseus-server.live.odysseuslarp.dev/geoserver/](https://odysseus-server.live.odysseuslarp.dev/geoserver/)   | Docker |
+| [odysseus-HANSCA](https://github.com/OdysseusLarp/odysseus-HANSCA)                     | [https://odysseus-server.live.odysseuslarp.dev/hansca/](https://odysseus-server.live.odysseuslarp.dev/hansca/)         | Static |
+| [odysseus-jump-ui](https://github.com/OdysseusLarp/hansca)                             | [https://odysseus-server.live.odysseuslarp.dev/jumpui/](https://odysseus-server.live.odysseuslarp.dev/jumpui/)         | Static |
+| [odysseus-mct](https://github.com/OdysseusLarp/odysseus-mct)                           | [https://odysseus-server.live.odysseuslarp.dev/mct/](https://odysseus-server.live.odysseuslarp.dev/mct/)               | Docker |
+| [odysseus-misc-ui](https://github.com/OdysseusLarp/odysseus-misc-ui)                   | [https://odysseus-server.live.odysseuslarp.dev/misc/#/](https://odysseus-server.live.odysseuslarp.dev/misc/#/)         | Static |
 
 ## Deployment
 
