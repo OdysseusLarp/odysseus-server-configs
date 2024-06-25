@@ -18,9 +18,9 @@ services:
       - database
     volumes:
       - "./.backend.env.prod:/app/.env:ro"
-    # devices:
-    #   # Set this to the same as DMX_DEVICE_PATH in .backend.env.prod
-    #   - "/dev/ttyUSB0:/dev/ttyUSB0"
+    devices:
+      # Set this to the same as DMX_DEVICE_PATH in .backend.env.prod
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
     healthcheck:
       test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
       interval: 30s
