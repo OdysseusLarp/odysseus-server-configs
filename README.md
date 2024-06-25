@@ -50,6 +50,33 @@ docker compose up -d
 
 Note that this will also restart the database container if its image has changed. This will not affect the data in the database because the data is stored in a volume.
 
+#### Seeds
+⚠️ **Running seeds will completely reset the database!** ⚠️ This should only be done in the start of the game.
+
+The backend container will automatically run seeds on startup if there are no data blobs in the database. To clear the database, do the following:
+```bash
+cd ~/git/odysseus-server-configs/home/odysseus
+
+# stop odysseus-backend and odysseus-database containers
+docker compose stop
+
+# probably a good idea to stop geoserver too as it might be using the database
+docker stop odysseus-geoserver
+
+# odysseus-database container volume mounts PostgreSQL data dir to ./data/postgres
+# so let's move the data dir to a backup location. it's owned by root, so we need to use sudo
+sudo mv ./data/postgres ./data/postgres-$(date +%y%m%d%H%M%S)
+
+# the database container will create a new data dir with correct permissions on startup
+docker compose up -d
+
+# let's check that everything starts up nicely
+docker compose logs --tail 10 -f
+
+# once confirmed, start the geoserver again
+docker start odysseus-geoserver
+```
+
 #### DMX
 The USB DMX thingy is volume mapped from the host to the docker container. If the USB device configuration changes for some reason, make sure that it's mapped correctly. Make sure that it shows up in `lsusb`:
 ```bash
