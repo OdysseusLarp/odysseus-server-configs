@@ -61,7 +61,7 @@ cd ~/git/odysseus-server-configs/home/odysseus
 docker compose stop
 
 # probably a good idea to stop geoserver too as it might be using the database
-docker stop odysseus-geoserver
+docker stop odysseus-gs
 
 # odysseus-database container volume mounts PostgreSQL data dir to ./data/postgres
 # so let's move the data dir to a backup location. it's owned by root, so we need to use sudo
@@ -74,7 +74,7 @@ docker compose up -d
 docker compose logs --tail 10 -f
 
 # once confirmed, start the geoserver again
-docker start odysseus-geoserver
+docker start odysseus-gs
 ```
 
 #### DMX
