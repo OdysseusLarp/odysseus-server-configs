@@ -157,3 +157,17 @@ cd ~/git/odysseus-misc-ui
 git pull
 ./deploy.sh
 ```
+
+### EmptyEpsilon
+We need to run two instances of EmptyEpsilon. One for the server, and another one for the mainscreen client that sends DMX.
+
+These instances use different configurations which are defined by setting the `HOME` environment variable, since EmptyEpsilon uses the `~/.emptyepsilon` directory for configuration. We have scripts that set the `HOME` environment variable and start the game.
+```
+# Start server
+cd ~/EmptyEpsilon
+./run-server.sh
+
+# Open another terminal and start the mainscreen client
+cd ~/EmptyEpsilon
+./run-gm-client.sh
+```
