@@ -113,6 +113,10 @@ server {
 		try_files $uri =404;
 	}
 
+	location /favicon.ico {
+		alias /var/www/odysseus/favicon.ico;
+	}
+
 	listen 80;
 	listen 443 ssl; # managed by Certbot
 	ssl_certificate /etc/letsencrypt/live/live.odysseuslarp.dev/fullchain.pem; # managed by Certbot
