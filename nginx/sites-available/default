@@ -117,6 +117,14 @@ server {
 		alias /var/www/odysseus/favicon.ico;
 	}
 
+	# Videos for misc-ui Starfield (airlock window) view
+	location /videos/ {
+		root /var/www/odysseus;
+		mp4;
+		mp4_buffer_size 1M;
+		mp4_max_buffer_size 5M;
+	}
+
 	listen 80;
 	listen 443 ssl; # managed by Certbot
 	ssl_certificate /etc/letsencrypt/live/live.odysseuslarp.dev/fullchain.pem; # managed by Certbot
